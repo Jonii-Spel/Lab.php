@@ -26,11 +26,15 @@ class UserController extends Controller
 
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::find($id);
+        // $user = User::findOrFail($id);
 
-        // dd($user);
+        // if ($user == null) {
+        //     return response()->view('errors.404', [], 404);
+        // }
+
+         //dd($user);
 
         return view('users.show', compact('user'));
 
@@ -38,7 +42,40 @@ class UserController extends Controller
 
     public function create()
     {
-        return "Crear nuevo user";
+        return view('users\create');
+    }
+
+    public function store()
+    {
+        //return redirect('usuarios/nuevo')->withInput();
+
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ], [
+            'name.required' => 'El campo nombre es obligatorio',
+            'email.required' => 'El campo email es obligatorio',
+            'password.required' => 'El campo password es obligatorio'
+        ]);
+
+        // if (empty($data['name'])) {
+        //     return redirect('usuarios/nuevo')->withErrors([
+        //         'name' => 'El campo nombre es obligatorio'
+        //     ]);
+        // }
+
+
+
+        // dd($data);  
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
+
+        return redirect()->route('users');
     }
 
     public function edit($id)

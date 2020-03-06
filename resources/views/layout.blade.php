@@ -61,7 +61,7 @@
                         <a class="nav-link" href="{{route('users')}}">Usuarios <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="">Nuevo <span class="sr-only"></span></a>
+                    <a class="nav-link" href="{{route('userNew')}}">Nuevo <span class="sr-only"></span></a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">

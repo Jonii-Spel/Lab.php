@@ -4,7 +4,7 @@
 
 @section('content')
     
-   <h1>Crear Usuario</h1>
+   <h1>Editar Usuario</h1>
 
    @if ($errors->any())
    <div class="form-group row alert alert-danger">
@@ -18,33 +18,34 @@
        
    @endif
             
-    <form class="" action="{{ url('/usuarios') }}" method="POST">
+    <form class="" action="{{ url("usuarios/{$user->id}") }}" method="POST">
+        {{ method_field('PUT') }}
         {{ csrf_field() }}
 
 
         <div class="form-group row {{ $errors->has('name')? 'alert alert-danger' : '' }}">
             <label for="name">Nombre y apellido:</label>
-            <input type="text" class="form-control" name="name" placeholder="name and surname" id="name" value="{{old('name')}}">
+            <input type="text" class="form-control" name="name" placeholder="name and surname" id="name" value="{{old('name', $user->name)}}">
 
             {{ $errors->has('name') ? $errors->first('name') : '' }}
           </div>
 
         <div class="form-group row {{ $errors->has('email')? 'alert alert-danger' : '' }}">
             <label for="email">Email:</label>
-          <input class="form-control" name="email" placeholder="example@hotmail.com" id="email" value="{{old('email')}}">
+          <input class="form-control" name="email" placeholder="example@hotmail.com" id="email" value="{{old('email', $user->email)}}">
 
           {{ $errors->has('email') ? $errors->first('email') : '' }}    
           </div>
 
           <div class="form-group row {{ $errors->has('password')? 'alert alert-danger' : '' }}">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="*****" id="password">
+            <input type="password" class="form-control" name="password" placeholder="*****" id="password" >
            
             {{ $errors->has('password') ? $errors->first('password') : '' }}
           </div>
 
           <div>
-            <button class="btn btn-outline-secondary" type="submit">New User</button>
+            <button class="btn btn-outline-secondary" type="submit">Editar User</button>
           </div>
         
     </form>

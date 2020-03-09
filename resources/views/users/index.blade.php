@@ -24,7 +24,7 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td><a href="{{route('userID', $user->id)}}">Detalles</a></td>
-            <td><a href="">Modificar</a></td>
+            <td><a href="{{route('users.edit', $user->id)}}">Modificar</a></td>
             <td><a href="">Eliminar</a></td>
           </tr>
           @endforeach

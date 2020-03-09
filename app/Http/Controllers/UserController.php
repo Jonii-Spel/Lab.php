@@ -51,12 +51,14 @@ class UserController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6'
         ], [
             'name.required' => 'El campo nombre es obligatorio',
             'email.required' => 'El campo email es obligatorio',
-            'password.required' => 'El campo password es obligatorio'
+            'email.email' => 'Por favor, ingrese un email valido',
+            'password.required' => 'El campo password es obligatorio',
+            'password.min' => 'El campo password necesita 6 caracteres como minimo'
         ]);
 
         // if (empty($data['name'])) {
@@ -64,7 +66,6 @@ class UserController extends Controller
         //         'name' => 'El campo nombre es obligatorio'
         //     ]);
         // }
-
 
 
         // dd($data);  
@@ -78,8 +79,27 @@ class UserController extends Controller
         return redirect()->route('users');
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        return "Aca editamos al user: {$id}";
+       return view('users.edit', ['user' => $user]);
+    }
+
+    public function update(User $user)
+    {
+
+        //dd('Actualizar usuario');
+
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6'
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+
+        $user->update($data);
+
+        return redirect("/usuarios/{$user->id}");
+
     }
 }

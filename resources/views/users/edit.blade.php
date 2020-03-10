@@ -39,7 +39,7 @@
 
           <div class="form-group row {{ $errors->has('password')? 'alert alert-danger' : '' }}">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="*****" id="password" >
+            <input type="password" class="form-control" name="password" placeholder="*****" id="password">
            
             {{ $errors->has('password') ? $errors->first('password') : '' }}
           </div>
@@ -47,14 +47,17 @@
           <div>
             <button class="btn btn-outline-secondary" type="submit">Editar User</button>
           </div>
+
+        
+            {{-- <a href="{{ url('/usuarios') }}">Regresar (url)</a>--}}
+            <br>
+            <a href="{{ action('UserController@index') }}">Regresar</a><br>
+            {{-- <a href="{{ route('users') }}">Regresar (route)</a> --}}
+       
         
     </form>
 
-    <p>
-        <br><a href="{{ url('/usuarios') }}">Regresar (url)</a><br>
-        <a href="{{ action('UserController@index') }}">Regresar (action)</a><br>
-        <a href="{{ route('users') }}">Regresar (route)</a>
-    </p>
+    
 
 @endsection
 

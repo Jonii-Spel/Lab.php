@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -67,13 +68,15 @@ class UserController extends Controller
         //     ]);
         // }
 
-
         // dd($data);  
 
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => Hash::make($data['password'])
+
+            // Hash::make();
+
         ]);
 
         return redirect()->route('users');
@@ -84,6 +87,7 @@ class UserController extends Controller
        return view('users.edit', ['user' => $user]);
     }
 
+
     public function update(User $user)
     {
 
@@ -91,15 +95,26 @@ class UserController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6'
+            'email' => 'required|email|unique:users,email,'. $user->id,
+            'password' => 'nullable|min:6'
         ]);
 
-        $data['password'] = bcrypt($data['password']);
+        if ($data['password'] != null) {
+            $data['password'] =Hash::make($data['password']);
+        }else {
+            unset($data['password']);
+        }
 
         $user->update($data);
 
-        return redirect("/usuarios/{$user->id}");
+        return redirect()->route('userID', ['user' => $user]);
 
+    }
+
+    function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('users');
     }
 }

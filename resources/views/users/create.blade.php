@@ -50,9 +50,9 @@
     </form>
 
     <p>
-        <br><a href="{{ url('/usuarios') }}">Regresar (url)</a><br>
-        <a href="{{ action('UserController@index') }}">Regresar (action)</a><br>
-        <a href="{{ route('users') }}">Regresar (route)</a>
+        <br><a href="{{ url('/usuarios') }}">Regresar</a>
+        {{-- <a href="{{ action('UserController@index') }}">Regresar (action)</a><br>
+        <a href="{{ route('users') }}">Regresar (route)</a> --}}
     </p>
 
 @endsection

@@ -11,9 +11,9 @@
     Correo electronico: {{ $user->email }}
 
     <p>
-        <a href="{{ url('/usuarios') }}">Regresar (url)</a><br>
-        <a href="{{ action('UserController@index') }}">Regresar (action)</a><br>
-        <a href="{{ route('users') }}">Regresar (route)</a>
+        {{-- <a href="{{ url('/usuarios') }}">Regresar (url)</a><br>
+        <a href="{{ action('UserController@index') }}">Regresar (action)</a><br> --}}
+         <a href="{{ route('users') }}">Regresar</a>
     </p>
 
 @endsection

@@ -76,7 +76,7 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
 
-            <div class="row mt-3">
+            <div class="mt-3">
                 <div>
 
                     @yield('content')

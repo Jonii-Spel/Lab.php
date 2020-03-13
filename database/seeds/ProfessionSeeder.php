@@ -17,19 +17,19 @@ class ProfessionSeeder extends Seeder
         //     'title' => 'Desarrollador back-end',
         // ]);
 
-        Profession::create([
-            'title' => 'Back-end developer'
-        ]);
+        // Profession::create([
+        //     'title' => 'Back-end developer'
+        // ]);
         
-        Profession::create([
-            'title' => 'Diseñador'
-        ]);
+        // Profession::create([
+        //     'title' => 'Diseñador'
+        // ]);
 
-        Profession::create([
-            'title' => 'Desarrollador'
-        ]);
+        // Profession::create([
+        //     'title' => 'Desarrollador'
+        // ]);
             
-        factory(Profession::class)->times(15)->create();
+        // factory(Profession::class)->times(15)->create();
         
         
         //CONSTRUCTORES DE CONSULTAS !!!

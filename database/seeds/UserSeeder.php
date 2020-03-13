@@ -41,13 +41,13 @@ class UserSeeder extends Seeder
             
         ]);
 
-        User::create([
-            'name' => 'Miguel',
-            'email' => 'migue@outlook.com',
-            'password' => bcrypt('miguelxd'),
-            'profession_id' => null
+        // User::create([
+        //     'name' => 'Miguel',
+        //     'email' => 'migue@outlook.com',
+        //     'password' => bcrypt('miguelxd'),
+        //     'profession_id' => null
             
-        ]);
+        // ]);
 
         // Modelo Factory
 
@@ -68,8 +68,8 @@ class UserSeeder extends Seeder
         // Modelo Constructor de consultas
 
         DB::table('users')->insert([
-            'name' => 'Jonii Spelzini',
-            'email' => 'chon@hotmail.com',
+            'name' => 'Jonii',
+            'email' => 'chonnnn@hotmail.com',
             'password' => bcrypt('78945'),
             'profession_id' => $professionBack
             

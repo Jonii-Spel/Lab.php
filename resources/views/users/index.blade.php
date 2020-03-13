@@ -39,7 +39,7 @@
     </table>
     <div>
       <script type="text/javascript">
-      function preguntar($userid, $userName) {    
+      function preguntar($userid) {    
         var r = confirm('Estas seguro que deseas eliminarlo ? ');
 
         if (r == true) {
